@@ -18,3 +18,7 @@
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+
+.byebug_history
+
+.vscode
