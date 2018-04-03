@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-# This script is used by this project's Docker development entrypoint script to
-# check if the app database (and any of the configured database schemas) exists,
-# tripping out if they are missing.
+# This script is used by this project's Docker development entrypoint script
+# to check if the app database (and any of the configured database schemas)
+# exists, tripping out if they are missing.
 #
 # If this script trips out, the entrypoint script will then try to run the
 # database setup. This is part of the magic that allows us the "clone & run"
@@ -14,7 +14,6 @@ require 'bundler'
 Bundler.setup(:default)
 
 require 'active_record'
-require 'pg'
 require 'erb'
 require 'yaml'
 

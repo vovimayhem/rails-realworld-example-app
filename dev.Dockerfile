@@ -1,4 +1,4 @@
-FROM ruby:2.4.0
+FROM ruby:2.5.1
 
 WORKDIR /usr/src
 ENV HOME=/usr/src PATH=/usr/src/bin:$PATH
