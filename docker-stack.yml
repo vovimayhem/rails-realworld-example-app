@@ -17,10 +17,6 @@ services:
   #
   web:
     image: poacosta/rails-realworld-example-app
-    build:
-      context: .
-      dockerfile: dev.Dockerfile
-    command: rails server
     ports:
     - published: 5000
       target: 3000
