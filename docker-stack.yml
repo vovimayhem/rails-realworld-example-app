@@ -29,6 +29,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:p3dr0@postgres:5432/demo_development
       PORT: 3000
+      RAILS_LOG_TO_STD_OUT: "true"
     deploy:
       replicas: 2
       update_config:
