@@ -22,13 +22,13 @@ services:
       dockerfile: dev.Dockerfile
     command: rails server
     ports:
-    - published: 3000
+    - published: 5000
       target: 3000
     depends_on:
     - postgres
     environment:
       DATABASE_URL: postgres://postgres:p3dr0@postgres:5432/demo_development
-      PORT: 5432
+      PORT: 3000
     deploy:
       replicas: 2
       update_config:
