@@ -1,0 +1,37 @@
+version: "3.4"
+
+volumes:
+  postgres_data:
+
+services:
+  postgres:
+    image: postgres:10.3-alpine
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    - ./db_init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: p3dr0
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  #
+  web:
+    image: poacosta/rails-realworld-example-app
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: rails server
+    ports:
+    - published: 5000
+      target: 8000
+    depends_on:
+    - postgres
+    environment:
+      DATABASE_URL: postgres://postgres:p3dr0@postgres:5432/demo_development
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
