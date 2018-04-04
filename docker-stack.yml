@@ -8,7 +8,6 @@ services:
     image: postgres:10.3-alpine
     volumes:
     - postgres_data:/var/lib/postgresql/data
-    - ./db_init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_PASSWORD: p3dr0
     deploy:
@@ -23,12 +22,13 @@ services:
       dockerfile: dev.Dockerfile
     command: rails server
     ports:
-    - published: 5000
-      target: 8000
+    - published: 3000
+      target: 3000
     depends_on:
     - postgres
     environment:
       DATABASE_URL: postgres://postgres:p3dr0@postgres:5432/demo_development
+      PORT: 5432
     deploy:
       replicas: 2
       update_config:
